@@ -15,9 +15,9 @@ class JOYWAYPROJECT_API AMagicBeansActor : public AActor, public IPickableItem
 	GENERATED_BODY()
 	
 public:	
-	// Sets default values for this actor's properties
 	AMagicBeansActor();
 
+protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	UMaterialInterface* MaterialToSelect;
 	UPROPERTY(BlueprintReadWrite)

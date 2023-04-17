@@ -18,9 +18,12 @@ class JOYWAYPROJECT_API UInventoryDemonstratorWidget : public UUserWidget
 public:
 	UPROPERTY(BlueprintReadOnly)
 	UInventoryComponent* CurrentInventory;
+
+public:
+	UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
+	void UpdateInventory();
+
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
 	void SetInventory(UInventoryComponent* NewInventory);
 	void SetInventory_Implementation(UInventoryComponent* NewInventory);
-	UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
-	void UpdateInventory();
 };

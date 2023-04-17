@@ -15,15 +15,18 @@ class JOYWAYPROJECT_API ADamageSpawner : public AActor
 	GENERATED_BODY()
 	
 public:	
-	// Sets default values for this actor's properties
 	ADamageSpawner();
-
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	UBoxComponent* DamageZone;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float DamageDelay = 1.f;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	int Damage = 7;
+
+protected:
+	TArray<AActor*> ActorsToDamage;
+	FTimerHandle DamageTimer;
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -33,8 +36,5 @@ protected:
 	virtual void OnDamageZoneEndOverlap(UPrimitiveComponent* OverlappedComp, AActor* Other, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
 	UFUNCTION()
 	virtual void OnDamageTimer();
-
-	TArray<AActor*> ActorsToDamage;
-	FTimerHandle DamageTimer;
 
 };

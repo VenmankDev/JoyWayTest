@@ -50,9 +50,6 @@ public:
 	UPROPERTY(BlueprintReadWrite)
 	UMaterialInterface* MaterialToSave;
 
-	virtual UBaseItem* Pick_Implementation() override;
-	virtual void DestroyItem_Implementation() override;
-
 protected:
 	bool IsFiring = true;
 	bool IsReadyToFire = true;
@@ -80,5 +77,8 @@ protected:
 
 	virtual void OnReloadTimer();
 	void SingleShot();
+
+	virtual UBaseItem* Pick_Implementation() override;
+	virtual void DestroyItem_Implementation() override;
 	
 };

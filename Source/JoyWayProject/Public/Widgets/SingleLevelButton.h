@@ -13,10 +13,12 @@ UCLASS()
 class JOYWAYPROJECT_API USingleLevelButton : public UUserWidget
 {
 	GENERATED_BODY()
-public:
 
+public:
 	UPROPERTY(BlueprintReadWrite,  meta = (ExposeOnSpawn))
 	FSoftObjectPath MapToOpen;
+
+public:
 	UFUNCTION(BlueprintCallable)
 	void LoadNewLevel();
 };

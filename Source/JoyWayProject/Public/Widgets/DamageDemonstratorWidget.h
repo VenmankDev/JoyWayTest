@@ -13,6 +13,12 @@ UCLASS()
 class JOYWAYPROJECT_API UDamageDemonstratorWidget : public UUserWidget
 {
 	GENERATED_BODY()
+
+public:
+	float CurrentSumDamage = 0.f;
+
+	FTimerHandle ClearTimer;
+
 public:
 	virtual void UpdateDamage(float NewDamage);
 	UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
@@ -20,9 +26,4 @@ public:
 
 private:
 	void OnClearTimer();
-
-public:
-	float CurrentSumDamage = 0.f;
-
-	FTimerHandle ClearTimer;
 };

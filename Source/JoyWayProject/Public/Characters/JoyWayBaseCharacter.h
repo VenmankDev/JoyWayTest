@@ -24,53 +24,54 @@ class JOYWAYPROJECT_API AJoyWayBaseCharacter : public ACharacter, public IJoyWay
 	GENERATED_BODY()
 public:
 	FOnCharacterDie CharacterDieDelegate;
-
-public:
-	UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
-	AJoyWayBaseWeapon* JoyWayBaseWeapon;
 	UPROPERTY(BlueprintReadOnly, EditAnywhere)
 	UInventoryComponent* InventoryComponent;
-	UPROPERTY(BlueprintReadWrite, VisibleAnywhere)
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	UCameraComponent* CameraComponent;
-	UPROPERTY(BlueprintReadWrite, VisibleAnywhere)
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	UWidgetInteractionComponent* WidgetInteractionComponent;
+
+	FOnCharacterHPChanged CharacterHPChanged;
+	FOnWeaponAmmoChanged CharacterAmmoChanged;
+
+protected:
+	UPROPERTY(BlueprintReadOnly)
+	AJoyWayBaseWeapon* JoyWayBaseWeapon;
 	UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
 	int HP;
 	UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
 	int MaxHP = 100;
+	AActor* LastSelectedItem;
 
-	FOnCharacterHPChanged CharacterHPChanged;
-
-	FOnWeaponAmmoChanged CharacterAmmoChanged;
+private:
 	FDelegateHandle AmmoDelegateHandler;
+
 public:
 	AJoyWayBaseCharacter();
-	virtual void Tick(float DeltaTime) override;
 
-	virtual void ApplyDamage_Implementation(int Value) override;
-
-	//Movement
-	void MoveForward(float Value);
-	void MoveRight(float Value);
-
-	//Weapon
 	void StartFire();
 	void StopFire();
 	void Reload();
-	void EquipWeapon(AJoyWayBaseWeapon* NewWeapon);
-	void OnAmmoChanged(int CurrentAmmo, int MaxAmmo);
-
 	void Equip();
+	void EquipWeapon(AJoyWayBaseWeapon* NewWeapon);
+
+	void MoveForward(float Value);
+	void MoveRight(float Value);
+
 
 	void GetHP(int& OutHP, int& OutMaxHP);
 	void GetAmmo(int& OutCurrentAmmo, int& OutMaxAmmo);
 	void Heal(int AdditionalHP);
-	void Die();
 
 	void UseItem(class UBaseItem* Item);
-protected:
-	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
 
-	AActor* LastSelectedItem;
+	virtual void Tick(float DeltaTime) override;
+protected:
+	virtual void ApplyDamage_Implementation(int Value) override;
+
+	void OnAmmoChanged(int CurrentAmmo, int MaxAmmo);
+
+	void Die();
+
+	virtual void BeginPlay() override;
 };

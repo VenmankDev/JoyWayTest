@@ -13,6 +13,7 @@ UCLASS()
 class JOYWAYPROJECT_API ULevelSelectorWidget : public UUserWidget
 {
 	GENERATED_BODY()
+
 public:
 	UPROPERTY(BlueprintReadwrite, meta = (AllowedClasses = "World"))
 	TArray<FSoftObjectPath> MapsToOpen;

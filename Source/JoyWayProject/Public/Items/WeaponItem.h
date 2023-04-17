@@ -15,15 +15,13 @@ UCLASS()
 class JOYWAYPROJECT_API UWeaponItem : public UBaseItem
 {
 	GENERATED_BODY()
+
 public:
-
-
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	int CurrentAmmo = 0;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	TSubclassOf<AJoyWayBaseWeapon> WeaponClass;
-
 
 protected:
 	virtual void Use(class AJoyWayBaseCharacter* JoyWayBaseCharacter);

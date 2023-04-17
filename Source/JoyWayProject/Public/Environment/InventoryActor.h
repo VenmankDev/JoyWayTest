@@ -15,8 +15,6 @@ class JOYWAYPROJECT_API AInventoryActor : public AActor
 	GENERATED_BODY()
 	
 public:	
-	// Sets default values for this actor's properties
-
 	UPROPERTY(BlueprintReadWrite, VisibleAnywhere)
 	UWidgetComponent* InventoryWidget;
 

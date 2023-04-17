@@ -23,6 +23,4 @@ public:
 
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
 	void ApplyDamage(int Value);
-
-public:
 };

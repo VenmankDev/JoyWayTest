@@ -14,16 +14,22 @@ UCLASS()
 class JOYWAYPROJECT_API AJoyWayBaseGameMode : public AGameModeBase
 {
 	GENERATED_BODY()
+
 public:
-	AJoyWayBaseGameMode();
 	UPROPERTY(EditDefaultsOnly)
 	TSubclassOf<AJoyWayBaseCharacter> PlayerPawnClass;
 
+protected:
+	FTransform SpawnTransform;
+	AJoyWayBaseCharacter* CurrentPawn;
+
+public:
+	AJoyWayBaseGameMode();
+
 	UFUNCTION()
 	void LoadNewMap(FSoftObjectPath Path);
+
 protected:
 	virtual void BeginPlay() override;
 	void OnCurrentPawnDie();
-	FTransform SpawnTransform;
-	AJoyWayBaseCharacter* CurrentPawn;
 };

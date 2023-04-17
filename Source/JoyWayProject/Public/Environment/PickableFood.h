@@ -14,15 +14,16 @@ class JOYWAYPROJECT_API APickableFood : public AActor, public IPickableItem
 {
 	GENERATED_BODY()
 	
-public:	
+public:
+	APickableFood();
 
+protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	UMaterialInterface* MaterialToSelect;
 	UPROPERTY(BlueprintReadWrite)
 	UMaterialInterface* MaterialToSave;
 	UPROPERTY(EditDefaultsOnly, Instanced)
 	UHealingItem* HealingItem;
-	APickableFood();
 
 	virtual UBaseItem* Pick_Implementation() override;
 	virtual void DestroyItem_Implementation() override;

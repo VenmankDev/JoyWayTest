@@ -16,20 +16,23 @@ class JOYWAYPROJECT_API UInventoryComponent : public UActorComponent
 	GENERATED_BODY()
 
 public:	
-	// Sets default values for this component's properties
-	UInventoryComponent();
-	// Called when the game starts
-	virtual void BeginPlay() override;
 	FOnInvetoryUpdated OnInvetoryUpdated;
 
 	UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
 	TArray<UBaseItem*> Items;
 
+protected:
 	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
 	int MaxCapacity;
 
+public:
+	UInventoryComponent();
+
 	bool AddItem(UBaseItem* Item);
 	bool RemoveItem(UBaseItem* Item);
+
+protected:
+	virtual void BeginPlay() override;
 
 
 		
